@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 ./regexp.py expressions_resident.txt
-./regexp.py expressions_F.txt
+./regexp.py expressions_fmatrix.txt
+./regexp.py expressions_eigenvecs.txt
+./regexp.py selgrad.txt
 
 ./generate_cpp.py
 
