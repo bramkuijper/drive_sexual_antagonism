@@ -171,12 +171,10 @@ int main(int argc, char **argv)
 
         selgrad = SELGRAD;
 
-        cout << selgrad << endl;
-
         // evolution of mutant
         x1mtplus1 = x1 + selgrad;
 
-        if (fabs(x1mtplus1 - x1) < 1e-12)
+        if (fabs(x1mtplus1 - x1) < 1e-12 || isnan(selgrad) != 0)
         {
             x1 = x1mtplus1;
         
@@ -218,8 +216,6 @@ int main(int argc, char **argv)
 
         x1 = x1mtplus1;
 
-        cout << x1 << endl;
-    
         X1 = ff_X_X1 + ff_Xd_X1;
         X2 = ff_X_X2 + ff_Xd_X2;
         Xd = ff_Xd_X1 + ff_Xd_X2;

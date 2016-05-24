@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-./xdrive_continuous 1.0 1 0.95    -2 2    0.4 0.4  0.5 0.1
+./xdrive_continuous 1.0 3 0.95    -2 2    0.4 0.4  0.5 0.1
 
 
 #    double kappa = atof(argv[1]);
