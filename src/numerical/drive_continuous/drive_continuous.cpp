@@ -171,7 +171,7 @@ int main(int argc, char **argv)
 
         selgrad = SELGRAD;
 
-        cout << selgrad << endl;
+        //cout << selgrad << endl;
 
         // evolution of mutant
         x1mtplus1 = x1 + selgrad;
@@ -218,7 +218,7 @@ int main(int argc, char **argv)
 
         x1 = x1mtplus1;
 
-        cout << x1 << endl;
+        //cout << x1 << endl;
     
         X1 = ff_X_X1 + ff_Xd_X1;
         X2 = ff_X_X2 + ff_Xd_X2;
