@@ -18,7 +18,6 @@
    %         ]{xits-regular.otf}
 %\setmathfont{xits-math.otf}
 \end_preamble
-\options numbers,sort&compress
 \use_default_options true
 \maintain_unincluded_children false
 \language english
@@ -100,29 +99,175 @@
 \begin_body
 
 \begin_layout Title
-Drive, Sexual Antagonism and the Sex Ratio
+X-chromosome Drive, Sexual Antagonism and the Sex Ratio
+\end_layout
+
+\begin_layout Author
+Bram Kuijper & Andrew Pomiankowski
 \end_layout
 
 \begin_layout Section
-The model
+Introduction
 \end_layout
 
 \begin_layout Standard
-We have two X-linked loci: one locus 
+Sex chromosome meiotic drive – whereby selfish sex chromosomes gain a transmissi
+on advantage and thereby distort the sex ratio – has been observed in a
+ range of organisms
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jaenike2001,Burt2006,Lindholm2016"
+
+\end_inset
+
+.
+ Particularly well-studied are driving X chromosomes, which gain a transmission
+ advantage at the expense of the Y chromosome in males (e.g., 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Dobzhansky1944,Presgraves1997"
+
+\end_inset
+
+; reviewed in 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Helleu2015"
+
+\end_inset
+
+).
+ Various theoretical studies suggest that X chromosome drive should lead
+ to highly female-biased sex ratios, yet, existing theoretical models overestima
+te the frequency of drive observed in reality 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Taylor2002a,Holman2015"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Recently, however, a model by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rydzewski2016"
+
+\end_inset
+
+ assessed whether sexually antagonistic polymorphism, which is likely to
+ arise on the X chromosome 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Rice1984,Gibson2002"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+How do drive and SA-polymorphism affect the sex ratio?
+\end_layout
+
+\begin_layout Standard
+Here we use the model by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rydzewski2016"
+
+\end_inset
+
+ (which itself is based on previous multilocus models of sexually antagonistic
+ variation: 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Patten2010,Ubeda2011,Connallon2011,Arnqvist2014"
+
+\end_inset
+
+) to assess how both X chromosome drive and SA polymorphism interact to
+ affect the secondary sex ratio (see Supplementary Information for the model
+ setup).
+  
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+Figure shows 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/home/bram/Projects/databases/references"
+options "bram"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Supplementary Information
+\end_layout
+
+\begin_layout Standard
+We present two models: the first model (here designated as the SA polymorphism
+ model) is based on the work by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rydzewski2016"
+
+\end_inset
+
+ and assesses how the combination of X-chromosome drive and various forms
+ of (pre-existing) X-linked SA polymorphism impact on the sex ratio.
+ The second model assesses how drive affects the invasion prospects of novel
+ female-benefit versus male-benefit mutants of small effect on the X chromosome
+ and how these effect the overall optimum of sexually antagonistic alleles.
+\end_layout
+
+\begin_layout Section
+SA polymorphism model
+\end_layout
+
+\begin_layout Standard
+Similar to the model by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Rydzewski2016"
+
+\end_inset
+
+, our model considers two X-linked loci: one locus 
 \begin_inset Formula $X$
 \end_inset
 
 , which contains either a wildtype allele 
-\begin_inset Formula $X$
+\begin_inset Formula $X_{1}$
 \end_inset
 
  (normal segregation of X and Y chromosomes in males), or the drive allele
  
-\begin_inset Formula $X^{d}$
+\begin_inset Formula $X_{d}$
 \end_inset
 
 .
- The other locus 
+ The other X-linked locus 
 \begin_inset Formula $\mathbb{\mathcal{X}}$
 \end_inset
 
@@ -135,15 +280,6 @@ We have two X-linked loci: one locus
 \end_inset
 
  (male benefit, female detriment.
- Haplotypes are given in Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab:Haplotype-frequencies"
-
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Standard
@@ -154,7 +290,14 @@ key "Rydzewski2016"
 
 \end_inset
 
- (see their table A1), where 
+ (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:fitness"
+
+\end_inset
+
+), where 
 \begin_inset Formula $c_{\mathrm{m}}$
 \end_inset
 
@@ -174,37 +317,31 @@ key "Rydzewski2016"
 
  denote the respective costs of bearing sexually antagonistic alleles in
  males and females.
+ 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="3">
+<lyxtabular version="3" rows="16" columns="5">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Haplotype
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Frequency in male gametes
+Genotype in males
 \end_layout
 
 \end_inset
@@ -213,18 +350,7 @@ Frequency in male gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-Frequency in female gametes
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $X\mathcal{X}_{\mathrm{f}}$
+\begin_inset Formula $X\mathcal{X}_{1}/Y$
 \end_inset
 
 
@@ -232,11 +358,11 @@ Frequency in female gametes
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y_{1}$
+\begin_inset Formula $X\mathcal{X}_{2}/Y$
 \end_inset
 
 
@@ -244,11 +370,11 @@ Frequency in female gametes
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $x_{1}$
+\begin_inset Formula $X_{d}\mathcal{X}_{1}/Y$
 \end_inset
 
 
@@ -256,37 +382,11 @@ Frequency in female gametes
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $X\mathcal{X}_{\mathrm{m}}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $y_{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $x_{2}$
+\begin_inset Formula $X_{d}\mathcal{X}_{2}/Y$
 \end_inset
 
 
@@ -300,7 +400,16 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $X_{d}\mathcal{X}_{\mathrm{f}}$
+Fitness due to SA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-s_{\mathrm{m}}$
 \end_inset
 
 
@@ -312,7 +421,7 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y_{3}$
+\begin_inset Formula $1$
 \end_inset
 
 
@@ -324,7 +433,19 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $x_{3}$
+\begin_inset Formula $1-s_{\mathrm{m}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
 \end_inset
 
 
@@ -338,7 +459,16 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $X_{d}\mathcal{X}_{\mathrm{m}}$
+Fitness due to drive
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
 \end_inset
 
 
@@ -350,7 +480,7 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y_{4}$
+\begin_inset Formula $1$
 \end_inset
 
 
@@ -362,7 +492,19 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $x_{4}$
+\begin_inset Formula $1-c_{\mathrm{m}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-c_{\mathrm{m}}$
 \end_inset
 
 
@@ -376,7 +518,8 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $Y$
+Segregation 
+\begin_inset Formula $d$
 \end_inset
 
 
@@ -388,7 +531,7 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $y_{5}$
+\begin_inset Formula $\frac{1}{2}:\frac{1}{2}$
 \end_inset
 
 
@@ -400,7 +543,679 @@ Frequency in female gametes
 \begin_inset Text
 
 \begin_layout Plain Layout
--
+\begin_inset Formula $\frac{1}{2}:\frac{1}{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k:1-k$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k:1-k$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Genotype in females
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X\mathcal{X}_{1}/X\mathcal{X}_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X\mathcal{X}_{2}/X\mathcal{X}_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X\mathcal{X}_{2}/X\mathcal{X}_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fitness due to SA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-hs_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-s_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fitness due to drive
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Genotype in females
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{d}\mathcal{X}_{1}/X\mathcal{X}_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X\mathcal{X}_{2}/X\mathcal{X}_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X\mathcal{X}_{2}/X\mathcal{X}_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fitness due to SA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-hs_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-s_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fitness due to drive
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-hc_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-hc_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-hc_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Genotype in females
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X\mathcal{X}_{1}/X\mathcal{X}_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X\mathcal{X}_{2}/X\mathcal{X}_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X\mathcal{X}_{2}/X\mathcal{X}_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fitness due to SA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-hs_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-s_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fitness due to drive
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-c_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-c_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-c_{\mathrm{f}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -417,10 +1232,10 @@ Frequency in female gametes
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Haplotype frequencies.
+Genotype frequencies and fitnesses.
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Haplotype-frequencies"
+name "tab:fitness"
 
 \end_inset
 
@@ -442,63 +1257,73 @@ Recursions
 \end_layout
 
 \begin_layout Standard
-As a male can only be formed in the presence of a 
-\begin_inset Formula $Y$
+Let 
+\begin_inset Formula $y_{i}$
 \end_inset
 
- chromosome, it only includes those paternal gametic contributions of 
-\begin_inset Formula $y_{5,t}$
+ be the frequency of haplotype 
+\begin_inset Formula $i$
+\end_inset
+
+ in sperm with 
+\begin_inset Formula $i\in\{1,\ldots,5\}$
+\end_inset
+
+, mapping to 
+\begin_inset Formula $\{X\mathcal{X}_{1},\ X\mathcal{X}_{2},\ X_{d}\mathcal{X}_{1},\ X_{d}\mathcal{X}_{2},\ Y\}$
+\end_inset
+
+ respectively.
+ Similarly, 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is the frequency of haplotype 
+\begin_inset Formula $i$
+\end_inset
+
+ in ova, where 
+\begin_inset Formula $i\in\{1,\ldots,4\}$
 \end_inset
 
 .
- For example, we then have the non-normalized frequencies of male gametes:
+ For example, the frequencies 
+\begin_inset Formula $x_{3,t+1}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{3,t+1}$
+\end_inset
+
+ reflect the frequencies of the 
+\begin_inset Formula $X_{d}\mathcal{X}_{1}$
+\end_inset
+
+ haplotype in ova and sperm respectively, in generation 
+\begin_inset Formula $t+1$
+\end_inset
+
+.
+ These are given by
 \begin_inset Formula 
-\begin{align*}
-\bar{w}_{\mathrm{m}}y_{1,t+1} & =\frac{1}{2}x_{1,t}y_{5,t}\left(1-t_{\mathrm{m}}\right)\\
-\bar{w}_{\mathrm{m}}y_{2,t+1} & =\frac{1}{2}x_{2,t}y_{5,t}\\
-\bar{w}_{\mathrm{m}}y_{3,t+1} & =kx_{3,t}y_{5,t}\left(1-c_{\mathrm{m}}\right)\left(1-t_{\mathrm{m}}\right)\\
-\bar{w}_{\mathrm{m}}y_{4,t+1} & =kx_{4,t}y_{5,t}\left(1-c_{\mathrm{m}}\right)\\
-\bar{w}_{\mathrm{m}}y_{5,t+1} & =\frac{1}{2}x_{1,t}y_{5,t}\left(1-t_{\mathrm{m}}\right)+\frac{1}{2}x_{2,t}y_{5,t}+\left(1-k\right)x_{3,t}y_{5,t}\left(1-c_{\mathrm{m}}\right)\left(1-t_{\mathrm{m}}\right)+\left(1-k\right)x_{4,t}y_{5,t}\left(1-c_{\mathrm{m}}\right)
-\end{align*}
+\begin{align}
+x_{3,t+1} & =\frac{1}{\bar{w}}_{\mathrm{f}}\left[x_{3,t}y_{3,t}w_{33}+\frac{1}{2}\sum_{j\in\{1,4\}}\left(x_{3,t}y_{j,t}+x_{j,t}y_{3,t}\right)w_{\mathrm{f,}3j}\right.\nonumber \\
+ & \phantom{=\frac{1}{\bar{w}}_{\mathrm{f}}=}+\frac{1}{2}\left(1-r\right)\left(x_{3,t}y_{2,t}+x_{2,t}y_{3,t}\right)w_{\mathrm{f,}23}\nonumber \\
+ & \left.\phantom{=\frac{1}{\bar{w}}_{\mathrm{f}}=}+\frac{1}{2}r\left(x_{1,t}y_{4,t}+x_{4,t}y_{1,t}\right)w_{\mathrm{f,}14}\right]\label{eq:x3tplus1}\\
+y_{3,t+1} & =\frac{1}{w_{\bar{m}}}kx_{3,t}y_{5,t}w_{35}\label{eq:y3tplus1}
+\end{align}
 
 \end_inset
 
-where mean male fitness 
+where 
+\begin_inset Formula $\bar{w}_{\mathrm{f}}$
+\end_inset
+
+ and 
 \begin_inset Formula $\bar{w}_{\mathrm{m}}$
 \end_inset
 
- is given by
-\begin_inset Formula 
-\begin{align*}
-\bar{w}_{\mathrm{m}} & =
-\end{align*}
-
-\end_inset
-
-In female gametes, we provide as an example, the recursion for the non-normalize
-d frequency 
-\begin_inset Formula $x_{1,t+1}$
-\end_inset
-
- of the first haplotype 
-\begin_inset Formula $X\mathcal{X}_{\mathrm{f}}$
-\end_inset
-
- in the next generation: 
-\begin_inset Formula 
-\begin{align*}
-\bar{w}_{\mathrm{f}}x_{1,t+1} & =x_{1,t}y_{1,t}+\frac{1}{2}x_{1,t}y_{2,t}\left(1-ht_{\mathrm{f}}\right)+\frac{1}{2}x_{1,t}y_{3,t}\left(1-c_{\mathrm{f}}\right)\\
- & +\frac{1}{2}\left(1-r\right)x_{1,t}y_{4,t}\left(1-ht_{\mathrm{f}}\right)+\frac{1}{2}x_{2,t}y_{1,t}\left(1-ht_{\mathrm{f}}\right)+\frac{1}{2}x_{2,t}y_{3,t}r\left(1-ht_{\mathrm{f}}\right)\\
- & +\frac{1}{2}x_{3,t}y_{1,t}+\frac{1}{2}rx_{3,t}y_{2,t}\left(1-ht_{\mathrm{f}}\right)+\frac{1}{2}\left(1-r\right)x_{4,t}y_{1,t}\left(1-ht_{\mathrm{f}}\right)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Sex ratios
+ reflect mean fitnesses for each sex.
 \end_layout
 
 \begin_layout Standard
@@ -1167,7 +1992,7 @@ f_{X_{d}\mathcal{X}^{\prime},t+1} & =\frac{1}{2}\sum_{k=\{2,3\}}\left(f_{X\mathc
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -1497,17 +2322,6 @@ name "tab:selection:drive"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "/home/bram/Projects/databases/references"
-options "bram"
-
-\end_inset
-
-
 \end_layout
 
 \end_body
