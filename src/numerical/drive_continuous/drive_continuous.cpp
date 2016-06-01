@@ -83,7 +83,6 @@ int main(int argc, char **argv)
 
     DataFile << "time;ff_X_X1;ff_X_X2;ff_Xd_X1;ff_Xd_X2;fm_X_X1;fm_X_X2;fm_Xd_X1;fm_Xd_X2;fm_Y;uf0;uf1;um0;um1;vf0;vf1;vm0;vm1;X1;X2;Xd;X;Y;x1;ev;" << endl;
 
-    //cout << "time;ff_X_X1;ff_X_X2;ff_Xd_X1;ff_Xd_X2;fm_X_X1;fm_X_X2;fm_Xd_X1;fm_Xd_X2;fm_Y;" << endl;
     for (int tx = 0; tx < maxt; ++tx)
     {
         // first update the resident frequencies
@@ -128,16 +127,6 @@ int main(int argc, char **argv)
             fm_Xd_X2 = fm_Xd_X2_tplus1;
             fm_Y = fm_Y_tplus1;
                         
-            
-//            cout << tx2 << ";" << ff_X_X1 << ";" 
-//                        << ff_X_X2 << ";" 
-//                        << ff_Xd_X1 << ";" 
-//                        << ff_Xd_X2 << ";" 
-//                        << fm_X_X1 << ";" 
-//                        << fm_X_X2 << ";" 
-//                        << fm_Xd_X1 << ";" 
-//                        << fm_Xd_X2 << ";"
-//                        << fm_Y << ";" << endl;
         }
 
         EXPRESSIONS_MATRIX_F
@@ -171,12 +160,10 @@ int main(int argc, char **argv)
 
         selgrad = SELGRAD;
 
-        //cout << selgrad << endl;
-
         // evolution of mutant
         x1mtplus1 = x1 + selgrad;
 
-        if (fabs(x1mtplus1 - x1) < 1e-12)
+        if (fabs(x1mtplus1 - x1) < 1e-12 || isnan(selgrad) != 0)
         {
             x1 = x1mtplus1;
         
@@ -218,8 +205,6 @@ int main(int argc, char **argv)
 
         x1 = x1mtplus1;
 
-        //cout << x1 << endl;
-    
         X1 = ff_X_X1 + ff_Xd_X1;
         X2 = ff_X_X2 + ff_Xd_X2;
         Xd = ff_Xd_X1 + ff_Xd_X2;
