@@ -2,16 +2,18 @@
 
 import numpy as np
 
-cf = list(np.arange(0,1,0.1))
-cm = list(np.arange(0,1,0.1))
-r = list(np.arange(0,0.5,0.1))
-kdrive = list(np.arange(0.5,1.0,0.1))
+cf = list(np.arange(0,0.8,0.1))
+cm = list(np.arange(0,0.8,0.1))
+r = list(np.arange(0.1,0.5,0.1)) + [ 0.01]
+kdrive = list(np.arange(0.6,1.0,0.1)) + [ 0.95 ]
 
 exe = "./xdrive"
 
 ctr = 1
 for cf_i in cf:
     for cm_i in cm:
+        if cf_i > cm_i:
+            continue
         for r_i in r:
             for kdrive_i in kdrive:
                 print("echo " + str(ctr))

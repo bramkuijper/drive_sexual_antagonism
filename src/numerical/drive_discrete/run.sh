@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-./xdrive 0.1 0.2 0.7 0.1
+./xdrive 0.2 0.2    0.95 0.1
 
 
 #    double cf = atof(argv[1]);
