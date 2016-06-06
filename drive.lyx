@@ -112,8 +112,8 @@ Introduction
 
 \begin_layout Standard
 Sex chromosome meiotic drive – whereby selfish sex chromosomes gain a transmissi
-on advantage and thereby distort the sex ratio – has been observed in a
- range of organisms
+on advantage and thereby distort the sex ratio – has been described in a
+ number of taxa, particularly in Diptera, dioecious plants and rodents 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Jaenike2001,Burt2006,Lindholm2016"
@@ -121,8 +121,9 @@ key "Jaenike2001,Burt2006,Lindholm2016"
 \end_inset
 
 .
- Particularly well-studied are driving X chromosomes, which gain a transmission
- advantage at the expense of the Y chromosome in males (e.g., 
+ Generally, sex chromosome drive occurs on X chromosome, which drive against
+ the Y chromosome in males, resulting in strongly female-biased sex-ratios
+ (e.g., 
 \begin_inset CommandInset citation
 LatexCommand citealp
 key "Dobzhansky1944,Presgraves1997"
@@ -132,14 +133,13 @@ key "Dobzhansky1944,Presgraves1997"
 ; reviewed in 
 \begin_inset CommandInset citation
 LatexCommand citealp
-key "Helleu2015"
+key "Jaenike2001,Helleu2015"
 
 \end_inset
 
 ).
- Various theoretical studies suggest that X chromosome drive should lead
- to highly female-biased sex ratios, yet, existing theoretical models overestima
-te the frequency of drive observed in reality 
+ However, in comparison to theoretical studies, the within-population frequency
+ of driving X chromosomes is often much lower in reality 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Taylor2002a,Holman2015"
@@ -147,26 +147,58 @@ key "Taylor2002a,Holman2015"
 \end_inset
 
 .
- 
+ Consequently, the factors that affect the prevalence in drive in natural
+ populations are still poorly understood.
 \end_layout
 
 \begin_layout Standard
-Recently, however, a model by 
+In this light, an insightful model by 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citealp
 key "Rydzewski2016"
 
 \end_inset
 
- assessed whether sexually antagonistic polymorphism, which is likely to
- arise on the X chromosome 
+ has assessed how sexually antagonistic (SA) polymorphism on the X affects
+ the prevalence of X chromosome drive and vice versa.
+ It showed that 
+\end_layout
+
+\begin_layout Standard
+the X is both a hotspot for SA polymorphisms (
 \begin_inset CommandInset citation
-LatexCommand citep
-key "Rice1984,Gibson2002"
+LatexCommand citealp
+key "Rice1984,Gibson2002,Mullon2012"
 
 \end_inset
 
+, but see 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Patten2009a,Fry2010"
 
+\end_inset
+
+) and meiotic drive loci 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Hurst1991a"
+
+\end_inset
+
+, blablabla.
+\end_layout
+
+\begin_layout Standard
+The model by 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Rydzewski2016"
+
+\end_inset
+
+ would also lends itself well to assess the combined effect of drive and
+ SA polymorphism on the sex-ratio.
 \end_layout
 
 \begin_layout Section
@@ -193,6 +225,18 @@ key "Patten2010,Ubeda2011,Connallon2011,Arnqvist2014"
  affect the secondary sex ratio (see Supplementary Information for the model
  setup).
   
+\end_layout
+
+\begin_layout Standard
+- make plots for r
+\end_layout
+
+\begin_layout Standard
+- do the analysis when Am is resident or when Af is resident
+\end_layout
+
+\begin_layout Standard
+- think about continuous model
 \end_layout
 
 \begin_layout Section

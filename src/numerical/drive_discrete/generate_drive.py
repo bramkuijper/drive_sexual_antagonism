@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-import os, re
+import os, re, sys
 
 # file with the mathematica expressions
 filename_exp = "drive_expressions.txt"
 
 # C++ file
-filename_c = "drive.cpp"
+filename_c = sys.argv[1]
 
 # the necessary regexps
 regexps = [(r"(x|y)\((\d+)\)","\\1\\2")]
@@ -27,7 +27,9 @@ f.close()
 
 fl2 = re.sub("ITERATIONS_HERE",fl,fl2)
 
-f = open("drive2.cpp","w")
+newfile = os.path.splitext(filename_c)[0]
+
+f = open(newfile + "2.cpp","w")
 
 f.write(fl2)
 
