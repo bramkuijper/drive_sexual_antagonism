@@ -36,10 +36,13 @@ int main(int argc, char **argv)
     double xtp1, xtp2, xtp3, xtp4;
     double ytp1, ytp2, ytp3, ytp4, ytp5;
 
+    double pe, ps, qe, qs;
+    double Dz, Demax, Dsmax, Dzprime; 
+
     double bound = 1e-07;
     int maxt = 10000000;
 
-    DataFile << "type;t;tf;tm;h;cf;cm;kdrive;r;y1;y2;y3;y4;y5;x1;x2;x3;x4;psr;ssr;fxd;faf;mxd;maf;" << endl;
+    DataFile << "type;t;tf;tm;h;cf;cm;kdrive;r;Dz;Demax;Dsmax;Dzprime;y1;y2;y3;y4;y5;x1;x2;x3;x4;psr;ssr;fxd;faf;mxd;maf;" << endl;
 
     for (double tf = 0; tf <= 1.0; tf+=0.01)
     {
@@ -47,15 +50,15 @@ int main(int argc, char **argv)
         {
             for (double h = 0; h <= 1.0; h+= 0.1)
             {
-                x1 = 0;
-                x2 = 0.5;
-                x3 = 0;
-                x4 = 0.5;
+                x1 = 0.5;
+                x2 = 0;
+                x3 = 0.5;
+                x4 = 0;
                 
-                y1 = 0;
-                y2 = 0.25;
-                y3 = 0;
-                y4 = 0.25;
+                y1 = 0.25;
+                y2 = 0;
+                y3 = 0.25;
+                y4 = 0;
                 y5 = 0.5;
 
                 int t;
@@ -75,10 +78,46 @@ int main(int argc, char **argv)
                             fabs(xtp4 - x4) <= bound
                     ) 
                     {
-                        DataFile << "init;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        // calculate frequency Af
+                        pe = x1 + x3;
+                        qe = x3 + x4;
+                        ps = y1 + y3;
+                        qs = y3 + y4;
+
+                        Dz = x1 * y4 + x4 * y1 - x2 * y3 - x3 * y2;
+                        Demax = pe * (1.0 - qe) < (1.0 - pe) * qe ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = ps * (1.0 - qs) < (1.0 - ps) * qs ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax));
+
+
+                        DataFile << "init;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << y3 + y4 << ";" 
+                            << y1 + y3 << ";" << endl;
                         break;
                     }
                     else
@@ -98,20 +137,56 @@ int main(int argc, char **argv)
                 // no convergence, odd.
                 if (t==maxt)
                 {
-                        DataFile << "init;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        // calculate frequency Af
+                        pe = x1 + x3;
+                        qe = x3 + x4;
+                        ps = y1 + y3;
+                        qs = y3 + y4;
+
+                        Dz = x1 * y4 + x4 * y1 - x2 * y3 - x3 * y2;
+                        Demax = pe * (1.0 - qe) < (1.0 - pe) * qe ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = ps * (1.0 - qs) < (1.0 - ps) * qs ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax));
+
+
+                        DataFile << "init;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << y3 + y4 << ";" 
+                            << y1 + y3 << ";" << endl;
                 }
 
-                assert(x1 == 0);
-                assert(x3 == 0);
+                assert(x2 == 0);
+                assert(x4 == 0);
 
-                x1 = 0.000005; 
-                x3 = 0.000005;
+                x2 = 0.000005; 
+                x4 = 0.000005;
                 
-                y1 = 0.000005; 
-                y3 = 0.000005;
+                y2 = 0.000005; 
+                y4 = 0.000005;
 
                 for (t = 0; t <= maxt; ++t)
                 {
@@ -129,10 +204,45 @@ int main(int argc, char **argv)
                             fabs(xtp4 - x4) <= bound
                     ) 
                     {
-                        DataFile << "invade;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        // calculate frequency Af
+                        pe = x1 + x3;
+                        qe = x3 + x4;
+                        ps = y1 + y3;
+                        qs = y3 + y4;
+
+                        Dz = x1 * y4 + x4 * y1 - x2 * y3 - x3 * y2;
+                        Demax = pe * (1.0 - qe) < (1.0 - pe) * qe ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = ps * (1.0 - qs) < (1.0 - ps) * qs ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax));
+
+                        DataFile << "invade;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << y3 + y4 << ";" 
+                            << y1 + y3 << ";" << endl;
                         break;
                     }
                     else
@@ -151,10 +261,45 @@ int main(int argc, char **argv)
                     // no convergence, odd.
                 if (t==maxt)
                 {
-                        DataFile << "invade;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        // calculate frequency Af
+                        pe = x1 + x3;
+                        qe = x3 + x4;
+                        ps = y1 + y3;
+                        qs = y3 + y4;
+
+                        Dz = x1 * y4 + x4 * y1 - x2 * y3 - x3 * y2;
+                        Demax = pe * (1.0 - qe) < (1.0 - pe) * qe ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = ps * (1.0 - qs) < (1.0 - ps) * qs ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax));
+
+                        DataFile << "invade;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << y3 + y4 << ";" 
+                            << y1 + y3 << ";" << endl;
                 }
             }
         }
