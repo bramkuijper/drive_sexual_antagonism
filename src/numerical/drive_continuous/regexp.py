@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/share/apps/python-3.5.1/bin/python3
 
 import re, sys
 

@@ -91,7 +91,6 @@ int main(int argc, char **argv)
     int tx2;
     DataFile << "time;time2;ff_X_X1;ff_X_X2;ff_Xd_X1;ff_Xd_X2;fm_X_X1;fm_X_X2;fm_Xd_X1;fm_Xd_X2;fm_Y;uf0x1m;uf1x1m;um0x1m;um1x1m;vf0x1m;vf1x1m;vm0x1m;vm1x1m;uf0x2m;uf1x2m;um0x2m;um1x2m;vf0x2m;vf1x2m;vm0x2m;vm1x2m;X1;X2;Xd;X;Y;x1;x2;evx1m;evx2m;" << endl;
 
-    //cout << "time;ff_X_X1;ff_X_X2;ff_Xd_X1;ff_Xd_X2;fm_X_X1;fm_X_X2;fm_Xd_X1;fm_Xd_X2;fm_Y;" << endl;
     for (int tx = 0; tx < maxt; ++tx)
     {
         // first update the resident frequencies
@@ -140,7 +139,6 @@ int main(int argc, char **argv)
             X1 = ff_X_X1_tplus1 + ff_Xd_X1_tplus1;
             X2 = ff_X_X2_tplus1 + ff_Xd_X2_tplus1;
                         
-            
             cout << tx2 << ";" << ff_X_X1 << ";" 
                         << ff_X_X2 << ";" 
                         << ff_Xd_X1 << ";" 
