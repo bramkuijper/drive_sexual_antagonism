@@ -116,12 +116,12 @@ on advantage and thereby distort the sex ratio – has been described in a
  number of taxa, particularly in Diptera, dioecious plants and rodents 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "Jaenike2001,Burt2006,Lindholm2016"
+key "Jaenike2001,Burt2006,Helleu2015,Lindholm2016"
 
 \end_inset
 
 .
- Generally, sex chromosome drive occurs on X chromosome, which drive against
+ Often, sex chromosome drive occurs on the X chromosome, which drives against
  the Y chromosome in males, resulting in strongly female-biased sex-ratios
  (e.g., 
 \begin_inset CommandInset citation
@@ -159,9 +159,17 @@ key "Rydzewski2016"
 
 \end_inset
 
- has assessed how sexually antagonistic (SA) polymorphism on the X affects
- the prevalence of X chromosome drive and vice versa.
- It showed that 
+ has recently assessed how X-chromosome drive affects sexually antagonistic
+ (SA) variation present on the X.
+ In line with previous models on the interaction between segregation distorters
+ and sexually antagonistic polymorphism 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Patten2014"
+
+\end_inset
+
+, it shows that drive and SA 
 \end_layout
 
 \begin_layout Standard
@@ -197,7 +205,7 @@ key "Rydzewski2016"
 
 \end_inset
 
- would also lends itself well to assess the combined effect of drive and
+ would also lend itself well to assess the combined effect of drive and
  SA polymorphism on the sex-ratio.
 \end_layout
 
