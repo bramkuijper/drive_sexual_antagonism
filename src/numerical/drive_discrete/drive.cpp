@@ -44,9 +44,9 @@ int main(int argc, char **argv)
 
     DataFile << "type;t;tf;tm;h;cf;cm;kdrive;r;Dz;Demax;Dsmax;Dzprime;y1;y2;y3;y4;y5;x1;x2;x3;x4;psr;ssr;fxd;faf;mxd;maf;" << endl;
 
-    for (double tf = 0; tf <= 1.0; tf+=0.01)
+    for (double tf = 0; tf <= 1.0; tf+=0.02)
     {
-        for (double tm = 0; tm <= 1.0; tm+=0.01)
+        for (double tm = 0; tm <= 1.0; tm+=0.02)
         {
             for (double h = 0; h <= 1.0; h+= 0.1)
             {
