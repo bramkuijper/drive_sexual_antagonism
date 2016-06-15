@@ -147,8 +147,8 @@ key "Taylor2002a,Holman2015"
 \end_inset
 
 .
- Consequently, the factors that affect the prevalence in drive in natural
- populations are still poorly understood.
+ Consequently, the factors that mitigate the prevalence of sex chromosome
+ drive in natural populations are still poorly understood.
 \end_layout
 
 \begin_layout Standard
@@ -159,54 +159,65 @@ key "Rydzewski2016"
 
 \end_inset
 
- has recently assessed how X-chromosome drive affects sexually antagonistic
- (SA) variation present on the X.
- In line with previous models on the interaction between segregation distorters
- and sexually antagonistic polymorphism 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Patten2014"
-
-\end_inset
-
-, it shows that drive and SA 
-\end_layout
-
-\begin_layout Standard
-the X is both a hotspot for SA polymorphisms (
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "Rice1984,Gibson2002,Mullon2012"
-
-\end_inset
-
-, but see 
-\begin_inset CommandInset citation
-LatexCommand citealp
-key "Patten2009a,Fry2010"
-
-\end_inset
-
-) and meiotic drive loci 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Hurst1991a"
-
-\end_inset
-
-, blablabla.
-\end_layout
-
-\begin_layout Standard
-The model by 
+ has recently assessed how X-chromosome drive affects the presence of sexually
+ antagonistic (SA) variation present on the X and vice versa.
+ It found that coevolution of drive and SA results in linkage disequilibria
+ whereby driving X chromosomes are enriched for SA alleles which are beneficial
+ to males rather than females (
 \begin_inset CommandInset citation
 LatexCommand citealp
 key "Rydzewski2016"
 
 \end_inset
 
- would also lend itself well to assess the combined effect of drive and
- SA polymorphism on the sex-ratio.
+; see also 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Patten2014"
+
+\end_inset
+
+ for a similar conclusions when studying autosomal drive).
+ This association arises because both drive alleles and male-benefit alleles
+ are under positive selection in males: the former because X chromosome
+ drive occurs in males only (drive against Y), the latter as male-benefit
+ alleles enhance male survival.
+ Based on these linkage disequilibria, 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Rydzewski2016"
+
+\end_inset
+
+ verbally suggest that overall frequencies of drive should increase, due
+ to the increased fitness of males bearing the driver.
+ Consequently, based on this model one would expect even more strongly female-bi
+ased sex-ratios relative to classical models of drive, thus widening the
+ gap between theory and empirical data.
+\end_layout
+
+\begin_layout Standard
+At the same time, however, the verbal argument by 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Rydzewski2016"
+
+\end_inset
+
+ does not fully considered the fate of male-benefit alleles associated with
+ the driver: while these alleles enhance male survival, they .
+ In turn, any post-survival sex ratios may not be as extremely female-biased
+ as suggested by their model.
+ By building on the model by 
+\begin_inset CommandInset citation
+LatexCommand citealp
+key "Rydzewski2016"
+
+\end_inset
+
+, here we therefore formally assess the interaction between drive and sexual
+ antagonism.
+ 
 \end_layout
 
 \begin_layout Section
@@ -232,7 +243,6 @@ key "Patten2010,Ubeda2011,Connallon2011,Arnqvist2014"
 ) to assess how both X chromosome drive and SA polymorphism interact to
  affect the secondary sex ratio (see Supplementary Information for the model
  setup).
-  
 \end_layout
 
 \begin_layout Standard

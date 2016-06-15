@@ -44,21 +44,23 @@ int main(int argc, char **argv)
 
     DataFile << "type;t;tf;tm;h;cf;cm;kdrive;r;Dz;Demax;Dsmax;Dzprime;y1;y2;y3;y4;y5;x1;x2;x3;x4;psr;ssr;fxd;faf;mxd;maf;" << endl;
 
-    for (double tf = 0; tf <= 1.0; tf+=0.02)
+    double step = 0.05;
+
+    for (double tf = 0; tf < 1.0 + step; tf+=step)
     {
-        for (double tm = 0; tm <= 1.0; tm+=0.02)
+        for (double tm = 0; tm < 1.0 + step; tm+=step)
         {
             for (double h = 0; h <= 1.0; h+= 0.1)
             {
-                x1 = 0.5;
-                x2 = 0;
-                x3 = 0.5;
-                x4 = 0;
+                x1 = 0;
+                x2 = 0.5;
+                x3 = 0;
+                x4 = 0.5;
                 
-                y1 = 0.25;
-                y2 = 0;
-                y3 = 0.25;
-                y4 = 0;
+                y1 = 0;
+                y2 = 0.25;
+                y3 = 0;
+                y4 = 0.25;
                 y5 = 0.5;
 
                 int t;
@@ -100,16 +102,17 @@ ssr = ((1 - tm)*x1*y5 + x2*y5 + (1 - cm)*(1 - tm)*x3*y5 + (1 - cm)*x4*y5)/(x1*y1
                             fabs(xtp4 - x4) <= bound
                     ) 
                     {
-                        // calculate frequency Af
-                        pe = x1 + x3;
-                        qe = x3 + x4;
-                        ps = y1 + y3;
-                        qs = y3 + y4;
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
 
-                        Dz = x1 * y4 + x4 * y1 - x2 * y3 - x3 * y2;
-                        Demax = pe * (1.0 - qe) < (1.0 - pe) * qe ? pe * (1.0 - qe) : (1.0 - pe) * qe;
-                        Dsmax = ps * (1.0 - qs) < (1.0 - ps) * qs ? ps * (1.0 - qs) : (1.0 - ps) * qs;
-                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax));
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
 
 
                         DataFile << "init;" 
@@ -159,16 +162,17 @@ ssr = ((1 - tm)*x1*y5 + x2*y5 + (1 - cm)*(1 - tm)*x3*y5 + (1 - cm)*x4*y5)/(x1*y1
                 // no convergence, odd.
                 if (t==maxt)
                 {
-                        // calculate frequency Af
-                        pe = x1 + x3;
-                        qe = x3 + x4;
-                        ps = y1 + y3;
-                        qs = y3 + y4;
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
 
-                        Dz = x1 * y4 + x4 * y1 - x2 * y3 - x3 * y2;
-                        Demax = pe * (1.0 - qe) < (1.0 - pe) * qe ? pe * (1.0 - qe) : (1.0 - pe) * qe;
-                        Dsmax = ps * (1.0 - qs) < (1.0 - ps) * qs ? ps * (1.0 - qs) : (1.0 - ps) * qs;
-                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax));
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
 
 
                         DataFile << "init;" 
@@ -201,14 +205,11 @@ ssr = ((1 - tm)*x1*y5 + x2*y5 + (1 - cm)*(1 - tm)*x3*y5 + (1 - cm)*x4*y5)/(x1*y1
                             << y1 + y3 << ";" << endl;
                 }
 
-                assert(x2 == 0);
-                assert(x4 == 0);
-
-                x2 = 0.000005; 
-                x4 = 0.000005;
+                x1 = 0.000005; 
+                x3 = 0.000005;
                 
-                y2 = 0.000005; 
-                y4 = 0.000005;
+                y1 = 0.000005; 
+                y3 = 0.000005;
 
                 for (t = 0; t <= maxt; ++t)
                 {
@@ -248,16 +249,17 @@ ssr = ((1 - tm)*x1*y5 + x2*y5 + (1 - cm)*(1 - tm)*x3*y5 + (1 - cm)*x4*y5)/(x1*y1
                             fabs(xtp4 - x4) <= bound
                     ) 
                     {
-                        // calculate frequency Af
-                        pe = x1 + x3;
-                        qe = x3 + x4;
-                        ps = y1 + y3;
-                        qs = y3 + y4;
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
 
-                        Dz = x1 * y4 + x4 * y1 - x2 * y3 - x3 * y2;
-                        Demax = pe * (1.0 - qe) < (1.0 - pe) * qe ? pe * (1.0 - qe) : (1.0 - pe) * qe;
-                        Dsmax = ps * (1.0 - qs) < (1.0 - ps) * qs ? ps * (1.0 - qs) : (1.0 - ps) * qs;
-                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax));
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
 
                         DataFile << "invade;" 
                             << t << ";" 
@@ -305,16 +307,17 @@ ssr = ((1 - tm)*x1*y5 + x2*y5 + (1 - cm)*(1 - tm)*x3*y5 + (1 - cm)*x4*y5)/(x1*y1
                     // no convergence, odd.
                 if (t==maxt)
                 {
-                        // calculate frequency Af
-                        pe = x1 + x3;
-                        qe = x3 + x4;
-                        ps = y1 + y3;
-                        qs = y3 + y4;
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
 
-                        Dz = x1 * y4 + x4 * y1 - x2 * y3 - x3 * y2;
-                        Demax = pe * (1.0 - qe) < (1.0 - pe) * qe ? pe * (1.0 - qe) : (1.0 - pe) * qe;
-                        Dsmax = ps * (1.0 - qs) < (1.0 - ps) * qs ? ps * (1.0 - qs) : (1.0 - ps) * qs;
-                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax));
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
 
                         DataFile << "invade;" 
                             << t << ";" 

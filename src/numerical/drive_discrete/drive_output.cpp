@@ -39,20 +39,23 @@ int main(int argc, char **argv)
     double xtp1, xtp2, xtp3, xtp4;
     double ytp1, ytp2, ytp3, ytp4, ytp5;
 
+    double pe, ps, qe, qs;
+    double Dz, Demax, Dsmax, Dzprime; 
+
     double bound = 1e-07;
     int maxt = 10000000;
 
-    DataFile << "type;t;tf;tm;h;cf;cm;kdrive;r;y1;y2;y3;y4;y5;x1;x2;x3;x4;psr;ssr;fxd;faf;mxd;maf;" << endl;
+    DataFile << "type;t;tf;tm;h;cf;cm;kdrive;r;Dz;Demax;Dsmax;Dzprime;y1;y2;y3;y4;y5;x1;x2;x3;x4;psr;ssr;fxd;faf;mxd;maf;" << endl;
 
-                x1 = 0.5;
-                x2 = 0;
-                x3 = 0.5;
-                x4 = 0;
+                x1 = 0;
+                x2 = 0.5;
+                x3 = 0;
+                x4 = 0.5;
                 
-                y1 = 0.25;
-                y2 = 0;
-                y3 = 0.25;
-                y4 = 0;
+                y1 = 0;
+                y2 = 0.25;
+                y3 = 0;
+                y4 = 0.25;
                 y5 = 0.5;
 
                 int t;
@@ -72,10 +75,51 @@ int main(int argc, char **argv)
                             fabs(xtp4 - x4) <= bound
                     ) 
                     {
-                        DataFile << "init;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
+
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        if (Dsmax < 0)
+                        {
+                            cout << ps << " " << qs << " " << ps * (1.0 - qs) << " "  << (1.0 - ps) * qs << endl;
+                            assert(Dsmax >= 0);
+                        }
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
+
+                        DataFile << "init;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << (y3 + y4) / (y1 + y2 + y3 + y4) << ";" 
+                            << (y1 + y3) / (y1 + y2 + y3 + y4) << ";" << endl;
                         break;
                     }
                     else
@@ -90,27 +134,121 @@ int main(int argc, char **argv)
                         x3 = xtp3;
                         x4 = xtp4;
                         
-                        DataFile << "init;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
+
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        if (Dsmax < 0)
+                        {
+                            cout << ps << " " << qs << " " << ps * (1.0 - qs) << " "  << (1.0 - ps) * qs << endl;
+                            assert(Dsmax >= 0);
+                        }
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
+
+
+                        DataFile << "init;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << (y3 + y4) / (y1 + y2 + y3 + y4) << ";" 
+                            << (y1 + y3) / (y1 + y2 + y3 + y4) << ";" << endl;
                     }
                 }
 
                 // no convergence, odd.
                 if (t==maxt)
                 {
-                        DataFile << "init;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        y1 = ytp1;
+                        y2 = ytp2;
+                        y3 = ytp3;
+                        y4 = ytp4;
+                        y5 = ytp5;
+                        x1 = xtp1;
+                        x2 = xtp2;
+                        x3 = xtp3;
+                        x4 = xtp4;
+                        
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
+
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        if (Dsmax < 0)
+                        {
+                            cout << ps << " " << qs << " " << ps * (1.0 - qs) << " "  << (1.0 - ps) * qs << endl;
+                            assert(Dsmax >= 0);
+                        }
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
+
+                        DataFile << "init;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << (y3 + y4) / (y1 + y2 + y3 + y4) << ";" 
+                            << (y1 + y3) / (y1 + y2 + y3 + y4) << ";" << endl;
                 }
 
-                x2 = 0.000005; 
-                x4 = 0.000005;
+
+                x1 = 0.0005; 
+                x3 = 0.0005;
                 
-                y2 = 0.000005; 
-                y4 = 0.000005;
+                y1 = 0.0005; 
+                y3 = 0.0005;
 
                 for (;t <= maxt; ++t)
                 {
@@ -128,10 +266,62 @@ int main(int argc, char **argv)
                             fabs(xtp4 - x4) <= bound
                     ) 
                     {
-                        DataFile << "invade;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        y1 = ytp1;
+                        y2 = ytp2;
+                        y3 = ytp3;
+                        y4 = ytp4;
+                        y5 = ytp5;
+                        x1 = xtp1;
+                        x2 = xtp2;
+                        x3 = xtp3;
+                        x4 = xtp4;
+                        
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
+
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        if (Dsmax < 0)
+                        {
+                            cout << ps << " " << qs << " " << ps * (1.0 - qs) << " "  << (1.0 - ps) * qs << endl;
+                            assert(Dsmax >= 0);
+                        }
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
+
+
+                        DataFile << "invade;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << (y3 + y4) / (y1 + y2 + y3 + y4) << ";" 
+                            << (y1 + y3) / (y1 + y2 + y3 + y4) << ";" << endl;
                         break;
                     }
                     else
@@ -146,18 +336,111 @@ int main(int argc, char **argv)
                         x3 = xtp3;
                         x4 = xtp4;
                         
-                        DataFile << "invade;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
+
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        if (Dsmax < 0)
+                        {
+                            cout << ps << " " << qs << " " << ps * (1.0 - qs) << " "  << (1.0 - ps) * qs << endl;
+                            assert(Dsmax >= 0);
+                        }
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
+
+                        DataFile << "invade;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << (y3 + y4) / (y1 + y2 + y3 + y4) << ";" 
+                            << (y1 + y3) / (y1 + y2 + y3 + y4) << ";" << endl;
                     }
                 }
                     // no convergence, odd.
                 if (t==maxt)
                 {
-                        DataFile << "invade;" << t << ";" << tf << ";" << tm << ";" << h << ";" << cf << ";" << cm << ";" << kdrive << ";" << r << ";";
-                        DataFile << y1 << ";" << y2 << ";" << y3 << ";" << y4 << ";" << y5 << ";";
-                        DataFile << x1 << ";" << x2 << ";" << x3 << ";" << x4 << ";" << psr << ";" << ssr << ";";
-                        DataFile << x3 + x4 << ";" << x1 + x3 << ";" << y3 + y4 << ";" << y1 + y3 << ";" << endl;
-                }
+                        y1 = ytp1;
+                        y2 = ytp2;
+                        y3 = ytp3;
+                        y4 = ytp4;
+                        y5 = ytp5;
+                        x1 = xtp1;
+                        x2 = xtp2;
+                        x3 = xtp3;
+                        x4 = xtp4;
+                        
+                        pe = x3 + x4;
+                        qe = x2 + x4;
+                        ps = (y3 + y4) / (y1 + y2 + y3 + y4);
+                        qs = (y2 + y4) / (y1 + y2 + y3 + y4);
+
+                        Dz = .5 * (1.0 / (y1 + y2 + y3 + y4)) * (x4 * y1 + y4 * x1 - x3 * y2 - y3 * x2); 
+                        Demax = (pe * (1.0-qe) < (1.0 - pe) * qe) ? pe * (1.0 - qe) : (1.0 - pe) * qe;
+                        Dsmax = (ps * (1.0-qs) < (1.0 - ps) * qs) ? ps * (1.0 - qs) : (1.0 - ps) * qs;
+
+                        if (Dsmax < 0)
+                        {
+                            cout << ps << " " << qs << " " << ps * (1.0 - qs) << " "  << (1.0 - ps) * qs << endl;
+                            assert(Dsmax >= 0);
+                        }
+                        Dzprime = Dz == 0 ? 0 : Dz / (.5 * (Demax + Dsmax) + .5 * (pe - ps) * (qe - qs));
+
+
+
+                        DataFile << "invade;" 
+                            << t << ";" 
+                            << tf << ";" 
+                            << tm << ";" 
+                            << h << ";" 
+                            << cf << ";" 
+                            << cm << ";" 
+                            << kdrive << ";" 
+                            << r << ";"
+                            << Dz << ";"
+                            << Demax << ";"
+                            << Dsmax << ";"
+                            << Dzprime << ";"
+                            << y1 << ";" 
+                            << y2 << ";" 
+                            << y3 << ";" 
+                            << y4 << ";" 
+                            << y5 << ";"
+                            << x1 << ";" 
+                            << x2 << ";" 
+                            << x3 << ";" 
+                            << x4 << ";" 
+                            << psr << ";" 
+                            << ssr << ";"
+                            << x3 + x4 << ";" 
+                            << x1 + x3 << ";" 
+                            << (y3 + y4) / (y1 + y2 + y3 + y4) << ";" 
+                            << (y1 + y3) / (y1 + y2 + y3 + y4) << ";" << endl;
+                    }
 }
